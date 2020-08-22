@@ -92,7 +92,10 @@ export default {
             ref.$router.push({name: 'Login'})
           }, 2500)
         })
-        .catch(err => console.error(err))
+        // eslint-disable-next-line handle-callback-err
+        .catch(err => {
+          this.error = 'Un problème a eu lieu, contactez les développeurs pour en savoir plus'
+        })
     }
   }
 }
