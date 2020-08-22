@@ -38,7 +38,7 @@ module.exports = class User {
    * @param {function} [callback] - Callback function
    */
   static loginUser = (payload, callback) => {
-    let sql = 'SELECT * FROM users WHERE email = ' payload.email
+    let sql = 'SELECT * FROM users WHERE email = ' + payload.email
     pool.query(sql, (err, result) => {
       if(err) {
         if(callback) callback(err, null)
