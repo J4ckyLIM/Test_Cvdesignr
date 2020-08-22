@@ -1,5 +1,5 @@
 const pool = require('./../config/pgsql.config.js')
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt")
 
 module.exports = class User {
   /**

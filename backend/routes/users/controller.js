@@ -1,7 +1,7 @@
 const User = require('../../models/user')
-const bcrypt = require("bcrypt");
-const config = require("../../config/config");
-const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt")
+const config = require("../../config/config")
+const jwt = require("jsonwebtoken")
 
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
       token : null   
     }
     user.password = bcrypt.hashSync(user.password, 10)
-    const expiresIn = 24 * 60 * 60;
+    const expiresIn = 24 * 60 * 60
     user.token = jwt.sign(
       { email: user.email,
         password: user.password
