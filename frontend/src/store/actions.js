@@ -1,4 +1,4 @@
-//import request from "@/axios.js";
+import request from "@/axios.js";
 const actions = {
   // /////////////////////
   // Contacts
