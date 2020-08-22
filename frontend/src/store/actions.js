@@ -1,12 +1,12 @@
-import request from "@/axios.js";
+import request from '@/../axios.js'
 const actions = {
   // /////////////////////
   // Contacts
   // /////////////////////
   getAllContacts: ({ commit }) => {
     request
-      .get("users/all/contact")
-      .then(response => commit("SET_CONTACTS", response.data));
+      .get('users/all/contact')
+      .then(response => commit('SET_CONTACTS', response.data))
   },
 
   // /////////////////////
@@ -14,9 +14,9 @@ const actions = {
   // /////////////////////
   getAllCollaborators: ({ commit }) => {
     request
-      .get("users/all/rankwell")
-      .then(response => commit("SET_COLLABORATORS", response.data));
+      .get('users/all/rankwell')
+      .then(response => commit('SET_COLLABORATORS', response.data))
   }
-};
+}
 
-export default actions;
+export default actions
