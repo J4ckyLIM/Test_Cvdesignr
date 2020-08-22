@@ -31,4 +31,27 @@ module.exports = class User {
       } 
     })
   }
+
+  /**
+   * Query database to retrieve the information about a user using its email
+   * @param {object} payload - Object containing information given from the frontend
+   * @param {function} [callback] - Callback function
+   */
+  static loginUser = (payload, callback) => {
+    let sql = 'SELECT * FROM users WHERE email = ' payload.email
+    pool.query(sql, (err, result) => {
+      if(err) {
+        if(callback) callback(err, null)
+      }
+      if(result) {
+        let test = bcrypt.compareSync(payload.password, result.rows[0].password)
+        if(test) {
+          callback(null, rows[0].token)
+        }
+        else {
+          callback('No matching result', null)
+        }
+      }
+    })
+  }
 };
