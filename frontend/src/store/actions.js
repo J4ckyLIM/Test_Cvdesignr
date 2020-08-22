@@ -11,10 +11,10 @@ const actions = {
   // /////////////////////
   // Contacts
   // /////////////////////
-  getAllContacts: ({ commit }) => {
+  getAllOffers: ({ commit }) => {
     request
-      .get('users/all/contact')
-      .then(response => commit('SET_CONTACTS', response.data))
+      .get('offers/all')
+      .then(response => commit('SET_OFFERS', response.data))
   }
 }
 
