@@ -6,7 +6,7 @@
         {{ error }}
       </div>
       <div class="alert alert-success" v-if="complete" role="alert">
-        Inscription réussie, il ne reste plus qu'à vous connecter.
+        {{ complete }}
       </div>
       <div class="card text-center">
         <div class="card-header">
@@ -26,7 +26,7 @@
               <label>Confirmation du mot de passe</label>
               <input type="password" class="form-control" v-model="confirm_password">
             </div>
-            <button type="submit" class="btn btn-primary" @click="checkForm">Je m'inscris</button>
+            <button v-if="!complete" type="submit" class="btn btn-primary" @click="checkForm">Je m'inscris</button>
           </form>
         </div>
       </div>
@@ -49,6 +49,11 @@ export default {
   },
 
   methods: {
+    /**
+     * This method check if the form is complete
+     * If not, it sends an error message
+     * If the form is complete we call register() to register the user
+     */
     checkForm () {
       if (this.email == null || this.email === '') {
         this.error = 'Le formulaire n\'est pas correctement rempli'
@@ -69,14 +74,23 @@ export default {
       }
     },
 
+    /**
+     * Call the API to register the user
+     * If The registration is correctly done,
+     * Redirect the user to the login page
+     */
     register () {
+      let ref = this
       this.$http
         .post('user/new', {
           email: this.email,
           password: this.password
         })
         .then(res => {
-          console.log(res)
+          this.complete = 'Inscription réussie, il ne reste plus qu\'à vous connecter. La redirection prendra quelques secondes'
+          setTimeout(function () {
+            ref.$router.push({name: 'Login'})
+          }, 2500)
         })
         .catch(err => console.error(err))
     }
