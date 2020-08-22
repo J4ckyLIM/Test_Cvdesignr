@@ -11,6 +11,11 @@ const mutations = {
     state.userToken = payload
   },
 
+  REMOVE_USER_TOKEN (state) {
+    localStorage.removeItem('jwt')
+    state.userToken = null
+  },
+
   // Update the societies state
   SET_SOCIETIES: (state, data) => (state.societies = data)
 }
