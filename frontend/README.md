@@ -26,6 +26,16 @@ npm install -g windows-build-tools
 npm run dev
 ```
 
+## Change variables
+
+In the root folder there is a axios.js file that is required to make http request
+
+modify it as your need
+
+```
+baseUrl is the variable to change
+```
+
 ### Run in development with docker
 
 Docker is required to proceed.
