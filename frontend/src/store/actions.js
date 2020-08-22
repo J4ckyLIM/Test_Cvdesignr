@@ -13,8 +13,8 @@ const actions = {
   // /////////////////////
   getAllOffers: ({ commit }) => {
     request
-      .get('offers/all')
-      .then(response => commit('SET_OFFERS', response.data))
+      .get('offer/all')
+      .then(response => commit('SET_OFFERS', response.data.data))
   }
 }
 
