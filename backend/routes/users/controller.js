@@ -37,7 +37,7 @@ module.exports = {
       email: req.body.email,
       password: req.body.password
     }
-
+    console.log(data)
     User.loginUser(data, (err, result) => {
       if(err) res.status(500).send({msg: 'fail', err: err})
       if(result) res.status(200).send({msg: 'success', data: result })
