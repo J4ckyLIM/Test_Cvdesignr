@@ -1,6 +1,30 @@
 <template>
-  <div class="hello">
+  <div class="mt-4">
     <h1>{{ msg }}</h1>
+    <div class="container w-25 mt-5">
+      <div class="card text-center">
+        <div class="card-header">
+          Inscription
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Mot de passe</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Confirmation du mot de passe</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button type="submit" class="btn btn-primary">Je m'inscris</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,7 +33,7 @@ export default {
   name: 'Register',
   data () {
     return {
-      msg: 'Welcome to Register'
+      msg: 'Inscrivez-vous pour utiliser l\'application'
     }
   }
 }
