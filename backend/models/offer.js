@@ -1,3 +1,5 @@
+const pool = require('./../config/pgsql.config.js')
+
 module.exports = class Offer {
   /**
    * Offer class
@@ -16,5 +18,21 @@ module.exports = class Offer {
     this.salary = offer.salary
     this.contract_type = contract_type
     this.company_location = company_location
+  }
+
+  /**
+   * Query the database to fetch all the offers
+   * @param {function} [callback] - Callback function
+   */
+  static getAllOffers = (callback) => {
+    let sql = 'SELECT * FROM offers ORDER BY created_at DESC'
+    pool.query(sql, (err, res) => {
+      if(err) {
+        if(callback) callback(err, null)
+      }
+      else {
+        if(callback) callback(null, res.rows)
+      }
+    })
   }
 };
