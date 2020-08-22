@@ -39,6 +39,11 @@ pgsql.config.js
 change all the variable to connect to your database server
 ```
 
+## Import database
+
+Import the final.sql file in your postgres database
+
+
 ## Running the REST API
 
 To run the server, type the following command:
