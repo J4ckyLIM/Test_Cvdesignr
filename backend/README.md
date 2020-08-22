@@ -22,6 +22,22 @@ Run this command:
 ```
 npm rebuild <name of the dependency>
 ```
+## Change variables
+
+In the config folder there're 2 files:
+
+config.js and pgsql.config.js
+
+```
+config.js
+
+change the port variable
+```
+```
+pgsql.config.js
+
+change all the variable to connect to your database server
+```
 
 ## Running the REST API
 
