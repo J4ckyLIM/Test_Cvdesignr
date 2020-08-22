@@ -1,27 +1,70 @@
-# frontend
+### VueApp
 
-> Front for the test application
+## Project setup
 
-## Build Setup
-
-``` bash
-# install dependencies
+```
 npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+To get the official vue CLI
+
+```
+npm install -g @vue/cli
+```
+
+### For windows developer
+
+You may need this tool to get the project working correctly (only if you get some issue with npm install)
+
+```
+npm install -g windows-build-tools
+```
+
+### Compiles and hot-reloads for development
+
+```
+npm run dev
+```
+
+### Run in development with docker
+
+Docker is required to proceed.
+
+Create a docker image for the app:
+
+```
+docker-compose build
+```
+
+Run the app in a docker container with this command:
+
+```
+docker-compose up
+```
+
+Your app is ready to use
+
+### Run in production with docker
+
+Docker is required to proceed.
+
+Create a docker image for the app:
+
+```
+docker build -t <name of your new docker image> -f <name of the dockerfile to use>.
+```
+
+Run the app inside your docker container:
+
+```
+docker run -it -p 8080:8080 --rm --name <name of the app> <name of the image given before>
+```
+
+Your app is ready just go to localhost:8080
+
+### Compiles and minifies for production
+
+```
+npm run build
+```
+

@@ -1,0 +1,23 @@
+# Building stage
+FROM node:lts-alpine as build-stage
+
+# Defining 'app' folder as the work directory
+WORKDIR /app
+
+# Copy 'package.json' and 'package-lock.json' (if available)
+COPY package*.json ./
+
+# Install all dependecies for the project
+RUN npm install
+
+# Copy all files and folders of the project in the work directory (eg: folder 'app')
+COPY . .
+
+# Build the app for production
+RUN npm run build
+
+# Production stage
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
