@@ -1,3 +1,5 @@
+const pool = require('./../config/pgsql.config.js')
+
 module.exports = class User {
   /**
    * User class
@@ -12,5 +14,21 @@ module.exports = class User {
     this.email = email
     this.password = password
     this.token = token
+  }
+
+  /**
+   * Query to create a new user in the database
+   * @param {function} [callback] - Callback function
+   */
+  createUser(callback) {
+    let sql = 'INSERT INTO user (email, password, token) VALUES ($1, $2, $3)' 
+    pool.query(sql, [this.email, this.password, this.token], (err, result) => {
+      if(err) {
+        if(callback) callback(err, null)
+      }
+      if(result) {
+        if(callback) callback(null, result)
+      } 
+    })
   }
 };
