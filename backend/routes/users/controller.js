@@ -29,6 +29,18 @@ module.exports = {
       if(err) res.status(500).send({msg: 'fail', err: err })
       if(result) res.status(200).send({msg: 'success'})
     })
+  },
+
+  loginUser: (req, res) => {
+    let data = {
+      email: req.body.email,
+      password: req.body.password
+    }
+
+    User.loginUser(data, (err, result) => {
+      if(err) res.status(500).send({msg: 'fail', err: err})
+      if(result) res.status(200).send({msg: 'success', data: result })
+    })
   }
     
 };
