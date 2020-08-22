@@ -1,6 +1,6 @@
 const state = {
   activeUser: {},
-  societies: [],
-};
+  societies: []
+}
 
-export default state;
+export default state
