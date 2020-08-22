@@ -1,6 +1,6 @@
 const state = {
-  activeUser: {},
-  societies: []
+  userToken: null,
+  offers: []
 }
 
 export default state
