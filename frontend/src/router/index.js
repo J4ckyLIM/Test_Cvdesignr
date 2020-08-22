@@ -2,12 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: () => import('@/views/Home')
+      component: () => import('@/views/Home'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/login',
@@ -21,3 +24,34 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (localStorage.getItem('jwt') == null) {
+      console.log('bye')
+      next({
+        path: '/login',
+        params: {
+          nextUrl: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else {
+    // If the user is already logged in, redirects to home
+    if (localStorage.getItem('jwt') != null) {
+      console.log('hello')
+      next({
+        path: '/',
+        params: {
+          nextUrl: '/'
+        }
+      })
+    } else {
+      next()
+    }
+  }
+})
+
+export default router
