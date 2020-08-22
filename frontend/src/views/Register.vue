@@ -1,6 +1,6 @@
 <template>
   <div class="mt-4">
-    <h1>{{ msg }}</h1>
+    <h1 class="main-title">{{ msg }}</h1>
     <div class="container w-25 mt-5">
       <div class="alert alert-danger" v-if="error" role="alert">
         {{ error }}
@@ -8,25 +8,25 @@
       <div class="alert alert-success" v-if="complete" role="alert">
         {{ complete }}
       </div>
-      <div class="card text-center">
-        <div class="card-header">
+      <div class="card text-center bg-style">
+        <div class="card-header label">
           Inscription
         </div>
         <div class="card-body">
           <form>
             <div class="form-group">
-              <label >Email</label>
+              <label class="label">Email</label>
               <input type="email" class="form-control" id="exampleInputEmail1" v-model="email">
             </div>
             <div class="form-group">
-              <label>Mot de passe</label>
+              <label class="label">Mot de passe</label>
               <input type="password" class="form-control" v-model="password">
             </div>
             <div class="form-group">
-              <label>Confirmation du mot de passe</label>
+              <label class="label">Confirmation du mot de passe</label>
               <input type="password" class="form-control" v-model="confirm_password">
             </div>
-            <button v-if="!complete" type="submit" class="btn btn-primary" @click="checkForm">Je m'inscris</button>
+            <button v-if="!complete" type="submit" class="btn btn-outline-light" @click="checkForm">Je m'inscris</button>
           </form>
         </div>
       </div>
@@ -116,5 +116,20 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.bg-style {
+  background-image: url('https://www.myfrenchstartup.com/logo/5b8641e534e1fcvdesignr_logo_bg-17.png');
+  background-size: cover;
+}
+
+.label {
+  color: black;
+  font-weight: 500;
+}
+
+.main-title {
+  color: black;
+  font-size: 1.5em;
 }
 </style>
