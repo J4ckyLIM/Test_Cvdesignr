@@ -1,9 +1,9 @@
 <template>
-  <div class="hello">
+  <div class="hello mt-5">
     <h1>{{ msg }}</h1>
     <div class="container-fluid mt-5">
       <div class="row">
-        <div class="col">Sidebar 1</div>
+        <div class="col sidebar ml-4 mt-2"></div>
         <div class="col-5">
           <div class="card mt-2 pointer" v-for="offer in allOffers" :key="offer.id" @click="showModal(offer)" data-toggle="modal" data-target="#offerModal">
             <div class="card-body">
@@ -18,7 +18,7 @@
             </div>
           </div>
         </div>
-        <div class="col">Sidebar 2</div>
+        <div class="col sidebar2 mr-4 mt-2"></div>
       </div>
     </div>
     <OfferModal :offer="selectedOffer"/>
@@ -46,7 +46,7 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to Home',
+      msg: 'Voici les dernières annonces',
       selectedOffer: null
     }
   },
@@ -92,5 +92,17 @@ a {
 
 .description {
   font-size: 1em;
+}
+
+.sidebar {
+  width: 100%;
+  background-image: url('https://image.freepik.com/photos-gratuite/affiche-panneau-publicitaire-vertical-rue-vide-fond-parc-ville_2221-2316.jpg');
+  background-size: cover;
+}
+
+.sidebar2 {
+  width: 100%;
+  background-image: url('https://media.nouvelobs.com/ext/uri/ureferentiel.nouvelobs.com/file/14426145.png');
+  background-size: cover;
 }
 </style>
