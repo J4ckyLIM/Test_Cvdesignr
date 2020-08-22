@@ -6,10 +6,10 @@
         Designr
     </a>
     <div class="row justify-content-end mr-4">
-      <button type="button" class="btn btn-primary mr-4" v-if="currentRoute != 'Home'" @click="redirectToPage('Home')">Annonces</button>
-      <button type="button" class="btn btn-primary mr-4" v-if="currentRoute != 'Register'" @click="redirectToPage('Register')">Inscription</button>
-      <button type="button" class="btn btn-primary" v-if="currentRoute != 'Login'" @click="redirectToPage('Login')">Connexion</button>
-      <button type="button" class="btn btn-primary" v-if="currentRoute != 'Home'" @click="redirectToPage('Home')">Deconnexion</button>
+      <button type="button" class="btn btn-primary mr-4" v-if="currentRoute === 'Home'" @click="redirectToPage('Home')">Annonces</button>
+      <button type="button" class="btn btn-primary mr-4" v-if="currentRoute === 'Login'" @click="redirectToPage('Register')">Inscription</button>
+      <button type="button" class="btn btn-primary" v-if="currentRoute === 'Register'" @click="redirectToPage('Login')">Connexion</button>
+      <button type="button" class="btn btn-primary" v-if="currentRoute === 'Home'" @click="disconnect()">Deconnexion</button>
     </div>
   </nav>
 </template>
@@ -30,6 +30,11 @@ export default {
      */
     redirectToPage (routeName) {
       this.$router.push({name: routeName})
+    },
+
+    disconnect () {
+      this.$store.dispatch('removeUserToken')
+      this.redirectToPage('Login')
     }
   }
 }
