@@ -2,6 +2,12 @@
   <div class="mt-4">
     <h1>{{ msg }}</h1>
     <div class="container w-25 mt-5">
+      <div class="alert alert-danger" v-if="error" role="alert">
+        {{ error }}
+      </div>
+      <div class="alert alert-success" v-if="complete" role="alert">
+        Inscription réussie, il ne reste plus qu'à vous connecter.
+      </div>
       <div class="card text-center">
         <div class="card-header">
           Inscription
@@ -9,18 +15,18 @@
         <div class="card-body">
           <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <label >Email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" v-model="email">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Mot de passe</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <label>Mot de passe</label>
+              <input type="password" class="form-control" v-model="password">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Confirmation du mot de passe</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <label>Confirmation du mot de passe</label>
+              <input type="password" class="form-control" v-model="confirm_password">
             </div>
-            <button type="submit" class="btn btn-primary">Je m'inscris</button>
+            <button type="submit" class="btn btn-primary" @click="checkForm">Je m'inscris</button>
           </form>
         </div>
       </div>
@@ -33,7 +39,46 @@ export default {
   name: 'Register',
   data () {
     return {
-      msg: 'Inscrivez-vous pour utiliser l\'application'
+      msg: 'Inscrivez-vous pour utiliser l\'application',
+      email: null,
+      password: null,
+      confirm_password: null,
+      error: null,
+      complete: null
+    }
+  },
+
+  methods: {
+    checkForm () {
+      if (this.email == null || this.email === '') {
+        this.error = 'Le formulaire n\'est pas correctement rempli'
+      }
+      if (this.password == null || this.password === '') {
+        this.error = 'Le formulaire n\'est pas correctement rempli'
+      }
+      if (this.confirm_password == null || this.confirm_password === '') {
+        this.error = 'Le formulaire n\'est pas correctement rempli !'
+      }
+      if (this.email && this.password && this.confirm_password) {
+        if (this.password !== this.confirm_password) {
+          this.error = 'Les mots de passes ne correspondent pas.'
+        } else {
+          this.error = null
+          this.register()
+        }
+      }
+    },
+
+    register () {
+      this.$http
+        .post('user/new', {
+          email: this.email,
+          password: this.password
+        })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => console.error(err))
     }
   }
 }
