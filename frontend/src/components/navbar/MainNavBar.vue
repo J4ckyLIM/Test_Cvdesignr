@@ -1,15 +1,15 @@
 <template>
   <!-- Image and text -->
-  <nav class="navbar navbar-light bg-light">
+  <nav class="navbar fixed-top navbar-light">
     <a class="navbar-brand" href="#">
         <img src="@/assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
         Designr
     </a>
     <div class="row justify-content-end mr-4">
-      <button type="button" class="btn btn-primary mr-4" v-if="currentRoute === 'Home'" @click="redirectToPage('Home')">Annonces</button>
-      <button type="button" class="btn btn-primary mr-4" v-if="currentRoute === 'Login'" @click="redirectToPage('Register')">Inscription</button>
-      <button type="button" class="btn btn-primary" v-if="currentRoute === 'Register'" @click="redirectToPage('Login')">Connexion</button>
-      <button type="button" class="btn btn-primary" v-if="currentRoute === 'Home'" @click="disconnect()">Deconnexion</button>
+      <button type="button" class="btn btn-outline-dark mr-4" v-if="currentRoute === 'Home'" @click="redirectToPage('Home')">Annonces</button>
+      <button type="button" class="btn btn-outline-dark mr-4" v-if="currentRoute === 'Login'" @click="redirectToPage('Register')">Inscription</button>
+      <button type="button" class="btn btn-outline-dark" v-if="currentRoute === 'Register'" @click="redirectToPage('Login')">Connexion</button>
+      <button type="button" class="btn btn-outline-dark" v-if="currentRoute === 'Home'" @click="disconnect()">Deconnexion</button>
     </div>
   </nav>
 </template>
