@@ -29,6 +29,7 @@ module.exports = {
       if(err) res.status(500).send({msg: 'fail', err: err })
       if(result) res.status(200).send({msg: 'success'})
     })
+    console.log("addUser is called")
   },
 
   loginUser: (req, res) => {
@@ -41,6 +42,8 @@ module.exports = {
       if(err) res.status(500).send({msg: 'fail', err: err})
       if(result) res.status(200).send({msg: 'success', data: result })
     })
+
+    console.log("loginUser is called")
   }
     
 };

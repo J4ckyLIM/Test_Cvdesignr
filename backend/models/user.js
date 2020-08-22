@@ -21,7 +21,7 @@ module.exports = class User {
    * @param {function} [callback] - Callback function
    */
   createUser(callback) {
-    let sql = 'INSERT INTO user (email, password, token) VALUES ($1, $2, $3)' 
+    let sql = 'INSERT INTO users (email, password, token) VALUES ($1, $2, $3)' 
     pool.query(sql, [this.email, this.password, this.token], (err, result) => {
       if(err) {
         if(callback) callback(err, null)
