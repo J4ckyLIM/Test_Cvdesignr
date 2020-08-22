@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-const config = require("./config");
+const config = require("./config/config");
 const bodyParser = require("body-parser");
 
 // Importing all routers
-//const usersRouter = require("./routes/users");
+const offerRouter = require("./routes/offers");
 
 const cors = (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -22,7 +22,7 @@ app.get("/", function (req, res) {
 });
 
 // Defining API Routes
-//app.use("/users", usersRouter);
+app.use("/offer", offerRouter);
 
 app.listen(config.port, function () {
   console.log("App running on localhost:%s", config.port);
